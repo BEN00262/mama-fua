@@ -3,6 +3,7 @@ module.exports = {
     CustomerModel: require('./customer'),
     MerchantModel: require('./merchant'),
     JobModel: require('./job'),
+    RoutineModel: require('./routine'),
     ReviewModel: require('./review'),
     PricingModel: require('./pricing'),
     SettlementModel: require('./settlement'),
