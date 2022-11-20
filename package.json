@@ -2,13 +2,14 @@
   "name": "mama-fua",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "john kerama <johnnesta2018@gmail.com>",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "amqplib": "^0.10.3",
     "bcrypt": "^5.1.0",
@@ -16,6 +17,6 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
-    "nanoid": "^4.0.0"
+    "nanoid": "^3.3.4"
   }
 }
