@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/cancellations', CancellationRoute);
-app.use('/customer', CustomerRoute);
+app.use('/customers', CustomerRoute);
 app.use('/jobs', JobRoute);
 app.use('/reviews', ReviewRoute);
 

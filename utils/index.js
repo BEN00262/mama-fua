@@ -63,8 +63,12 @@ const compare_passwords = async (password, hash) => {
     return await bcrypt.compare(password, hash)
 }
 
+const destructure_jwt = (authToken) => {
+    return jwt.decode(authToken, process.env.JWT_SECRET_KEY);
+}
+
 module.exports = {
     MamaFuaException, gen_verification_code,
     handle_exception, handle_response, get_password_hash,
-    get_jwt, get_random_string, compare_passwords
+    get_jwt, get_random_string, compare_passwords, destructure_jwt
 }

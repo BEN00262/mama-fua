@@ -1,12 +1,18 @@
 const { CancellationController } = require('../../controllers');
+const { Auth } = require("../../middlewares");
 
 const router = require('express').Router();
 
-// PROTECTED BY ADMIN AUTH
-router.get('/:merchantReference', CancellationController.getMerchantsCancellations);
+router.get(
+    '/:merchantReference', 
+    [Auth.EnsureIsAuthenticated("admin")], // not implemented yet
+    CancellationController.getMerchantsCancellations
+);
 
-// PROTECTED BY AUTH MIDDLEWARE
-
-router.post('/', CancellationController.createCancellation);
+router.post(
+    '/',
+    [Auth.EnsureIsAuthenticated("customer")],
+    CancellationController.createCancellation
+);
 
 module.exports = router;

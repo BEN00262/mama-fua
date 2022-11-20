@@ -1,4 +1,5 @@
 const { CustomerController } = require('../../controllers');
+const { Auth } = require('../../middlewares');
 
 const router = require('express').Router();
 
@@ -6,7 +7,17 @@ const router = require('express').Router();
 
 router.post('/', CustomerController.createAccount);
 router.post('/login', CustomerController.login);
-router.post('/verify-account', CustomerController.verifyAccount);
-router.put('/update-account', CustomerController.updateAccount);
+
+router.post(
+    '/verify-account', 
+    [Auth.EnsureIsAuthenticated("customers")],
+    CustomerController.verifyAccount
+);
+
+router.put(
+    '/update-account', 
+    [Auth.EnsureIsAuthenticated("customers")],
+    CustomerController.updateAccount
+);
 
 module.exports = router;
