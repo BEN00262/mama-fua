@@ -1,5 +1,5 @@
 const { CustomerModel } = require("../../models");
-const { handle_exception, get_password_hash, handle_response, get_jwt, gen_verification_code, MamaFuaException } = require("../../utils")
+const { handle_exception, get_password_hash, handle_response, get_jwt, gen_verification_code, MamaFuaException, compare_passwords } = require("../../utils")
 
 class CustomerController {
     static async createAccount(req, res) {
@@ -7,11 +7,11 @@ class CustomerController {
             const { fullname, phone_number, password } = req.body;
 
             const verification_code = gen_verification_code();
-
+            console.log(phone_number, fullname, password, verification_code, await get_password_hash(password));
             const customer = await CustomerModel.create({
                 fullname, phone_number,
                 verification_code,
-                password: get_password_hash(password)
+                password: await get_password_hash(password)
             });
 
 
@@ -32,7 +32,7 @@ class CustomerController {
         try {
             const { phone_number, password } = req.body;
 
-            const customer = await Customer.findOne({
+            const customer = await CustomerModel.findOne({
                 phone_number
             });
 
