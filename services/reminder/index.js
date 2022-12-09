@@ -10,7 +10,7 @@ class MamaFuaReminderEngineBase {
     // expose a method to pause reminder(s)
     // expose a method to remove reminder(s)
     constructor () {
-        this.queue = new Agenda({ db: { address: process.env.MONGO_URI } });
+        this.agenda = new Agenda({ db: { address: process.env.MONGO_URI } });
         this.scheduled_jobs = [];
     }
 
@@ -69,6 +69,7 @@ class MamaFuaReminderEngineBase {
 
     async startWorker() {
         // on error send a notification to us : but before just ignore it and move on
+        console.log(process.env.MONGO_URI)
         await this.agenda.start();
 
         for (const { name, reminder_pattern, repeat } of this.scheduled_jobs) {

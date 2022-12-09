@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "server": "node app.js",
+    "reminder-engine": "node services",
+    "start": "concurrently npm:reminder-engine npm:server"
   },
   "keywords": [],
   "author": "john kerama <johnnesta2018@gmail.com>",
@@ -15,10 +17,12 @@
     "amqplib": "^0.10.3",
     "bcrypt": "^5.1.0",
     "bullmq": "^3.2.2",
+    "concurrently": "^7.6.0",
     "consola": "^2.15.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "find-config": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
     "nanoid": "^3.3.4"
