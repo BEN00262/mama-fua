@@ -11,6 +11,7 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
+    "@hokify/agenda": "^6.2.13",
     "amqplib": "^0.10.3",
     "bcrypt": "^5.1.0",
     "bullmq": "^3.2.2",
