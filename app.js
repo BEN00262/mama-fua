@@ -4,7 +4,6 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const { CancellationRoute, CustomerRoute, JobRoute, ReviewRoute } = require('./routers');
-const { MamaFuaReminderEngine } = require('./services');
 
 
 const PORT = +process.env.PORT || 3300;
@@ -24,7 +23,6 @@ app.use('/reviews', ReviewRoute);
 ;(async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
-        MamaFuaReminderEngine().startWorker();
 
         app.listen(PORT, () => {
             console.log(`Server started on http://localhost:${PORT}`);
